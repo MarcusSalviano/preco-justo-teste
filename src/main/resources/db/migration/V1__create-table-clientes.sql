@@ -1,5 +1,5 @@
 create table clientes (
-    id SERIAL PRIMARY KEY,
+    id BIGINT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     cpf VARCHAR(14) NOT NULL UNIQUE,

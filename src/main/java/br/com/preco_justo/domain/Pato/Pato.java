@@ -3,6 +3,9 @@ package br.com.preco_justo.domain.Pato;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "patos")
 @Entity(name = "Pato")
 @Getter
@@ -18,20 +21,18 @@ public class Pato {
     private String nome;
     private String raca;
 
-    @JoinColumn(name = "mae_id", insertable = false, updatable = false)
-    @ManyToOne(targetEntity = Pato.class, fetch = FetchType.EAGER)
+    private Double valorVenda;
+
+    @ManyToOne
+    @JoinColumn(name = "mae_id")
     private Pato mae;
 
-    @Column(name = "mae_id")
-    private Long maeId;
-
-//    @OneToMany(mappedBy = "mae", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-//    private List<Pato> filhos = new ArrayList<>();
+    @OneToMany(mappedBy = "mae", cascade = CascadeType.REFRESH)
+    private List<Pato> filhos = new ArrayList<>();
 
     public Pato(DadosCadastroPato dados) {
         this.nome = dados.nome();
         this.raca = dados.raca();
-        this.maeId = dados.mae();
     }
 
     public Pato(Pato dados) {

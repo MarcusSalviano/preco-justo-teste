@@ -5,9 +5,9 @@ import br.com.preco_justo.domain.Pato.Pato;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Set;
 
 @Table(name = "vendas")
 @Entity(name = "Venda")
@@ -29,7 +29,7 @@ public class Venda {
 
     @OneToMany
     @JoinTable(name="vendas_patos", inverseJoinColumns=@JoinColumn(name="pato_id"))
-    private Set<Pato> patosList;
+    private List<Pato> patosList = new ArrayList<>();
 
     public Venda(DadosVenda dados) {
         //this.clienteId = dados.clienteId();

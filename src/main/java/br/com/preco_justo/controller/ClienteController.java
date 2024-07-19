@@ -43,6 +43,11 @@ public class ClienteController {
         return ResponseEntity.ok(new DadosDetalhamentoCliente(cliente));
     }
 
+    @GetMapping ("/hello")
+    public ResponseEntity detalhar() {
+        return ResponseEntity.ok("Hello, It is runnig!!!");
+    }
+
     @DeleteMapping ("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id) {
